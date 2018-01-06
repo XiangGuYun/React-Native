@@ -11,7 +11,7 @@ import {
   Text,
   View
 } from 'react-native';
-import HelloComponent from './HelloComponent'
+import HelloComponent from './../case1_create_component/HelloComponent'
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' +
@@ -21,6 +21,14 @@ const instructions = Platform.select({
 });
 
 export default class App extends Component<{}> {
+
+  constructor(props){//第一个调用的方法，初始化组件
+    super(props);
+    this.state={
+      remove:false//判断组件是否已经被移除
+    }
+  }
+
   render() {
     return (
       <View style={styles.container}>
