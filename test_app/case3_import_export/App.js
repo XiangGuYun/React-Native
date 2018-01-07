@@ -11,7 +11,9 @@ import {
   Text,
   View
 } from 'react-native';
-import HelloComponent from './HelloComponent'
+
+//导入ES6组件，以及变量，方法
+import EIComponent,{name, age, sum} from './EIComponent.js'
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' +
@@ -22,18 +24,27 @@ const instructions = Platform.select({
 
 export default class App extends Component<{}> {
 
-  constructor(props){//第一个调用的方法，初始化组件
+  constructor(props){
     super(props);
-    this.state={
-      remove:false//判断组件是否已经被移除
-    }
+    this.state=({
+      remove:false,
+      result:''
+    })
   }
 
   render() {
     return (
       <View style={styles.container}>
-      <HelloComponent
-        name="小明"/>
+        <Text style={{fontSize:20}}>name:{name}</Text>
+        <Text style={{fontSize:20}}>age:{age}</Text>
+        <Text style={{fontSize:20}}
+              onPress={()=>{
+                var result=sum(1,2);
+                this.setState({
+                  result:result,
+                })
+              }}
+        >1+2={this.state.result}</Text>
       </View>
     );
   }

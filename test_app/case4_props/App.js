@@ -11,29 +11,40 @@ import {
   Text,
   View
 } from 'react-native';
-import HelloComponent from './HelloComponent'
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' +
-    'Cmd+D or shake for dev menu',
-  android: 'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
+import PropsComponent from './PropsComponent.js'
 
 export default class App extends Component<{}> {
 
-  constructor(props){//第一个调用的方法，初始化组件
+  constructor(props){
     super(props);
-    this.state={
-      remove:false//判断组件是否已经被移除
-    }
+    this.state=({
+      remove:false,
+      result:''
+    })
   }
 
   render() {
+
+    var params={name:'校长',age:58, sex:'男'};//定义一组属性
+    var {name,sex}=params;//结构赋值
     return (
       <View style={styles.container}>
-      <HelloComponent
-        name="小明"/>
+       <PropsComponent
+           //结构赋值
+           name={name}
+           sex={sex}
+
+           //圆角操作符，ES6方式
+           //{...params}
+
+           //传统方式
+           //name={param.name}
+           //age={param.age}
+           //sex={param.sex}
+
+           //name="小明"
+         />
       </View>
     );
   }
